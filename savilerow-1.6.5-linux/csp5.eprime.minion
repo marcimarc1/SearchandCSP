@@ -1,0 +1,52 @@
+MINION 3
+# CSETopLevel_number = 0
+# CSETopLevel_eliminated_expressions = 0
+# CSETopLevel_total_size = 0
+# CSE_active_number = 0
+# CSE_active_eliminated_expressions = 0
+# CSE_active_total_size = 0
+**VARIABLES**
+DISCRETE M_00000 #
+{2..4}
+**CONSTRAINTS**
+w-inintervalset(M_00000, [2,2,4,4])
+**VARIABLES**
+DISCRETE M_00002 #
+{1..3}
+DISCRETE M_00003 #
+{1..2}
+DISCRETE M_00004 #
+{1..3}
+**CONSTRAINTS**
+w-inintervalset(M_00004, [1,1,3,3])
+**VARIABLES**
+DISCRETE M_00005 #
+{1..3}
+DISCRETE M_00006 #
+{1..3}
+DISCRETE M_00007 #
+{2..4}
+**CONSTRAINTS**
+w-inintervalset(M_00007, [2,2,4,4])
+**VARIABLES**
+DISCRETE aux19 #
+{0..2}
+DISCRETE aux20 #
+{0..4}
+BOOL aux21 #
+DISCRETE aux22 #(-1 + aux19)
+{-1..1}
+ALIAS gifts[5]=[0, 10, 7, 4, 12]
+**SEARCH**
+PRINT[[M_00000],[M_00002],[M_00003],[M_00004],[M_00005],[M_00006],[M_00007]]
+VARORDER STATIC [M_00000, 1, M_00002, M_00003, M_00004, M_00005, M_00006, M_00007]
+VARORDER AUX [M_00000,M_00002,M_00003,M_00004,M_00005,M_00006,M_00007,aux19,aux20,aux21,aux22]
+**CONSTRAINTS**
+diseq(M_00000,M_00007)
+diseq(M_00004,M_00006)
+diseq(M_00002,M_00003)
+diseq(M_00000,M_00006)
+gccweak([M_00000, M_00002, M_00003, M_00004, M_00005, M_00006, M_00007],[1, 3, 4],[aux22, aux20, aux21])
+weightedsumleq([-1,1],[1,aux19],aux22)
+weightedsumgeq([-1,1],[1,aux19],aux22)
+**EOF**
